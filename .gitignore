@@ -1,0 +1,21 @@
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Generated frontend files
+dist/
+**/dist/
+
+# Logs
+*.log
+
+# Local editor and OS files
+.vscode/
+.DS_Store
+Thumbs.db
