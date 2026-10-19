@@ -1,0 +1,772 @@
+
+/* =========================================================
+   RESQ RESCUER COMMAND CENTER — UI UPGRADE
+   Add this file after your existing index.css styles.
+   ========================================================= */
+
+:root {
+    --resq-bg: #060a10;
+    --resq-surface: #0c121c;
+    --resq-surface-2: #101824;
+    --resq-border: #1b2a3d;
+    --resq-border-soft: rgba(148, 163, 184, 0.10);
+    --resq-text: #f8fafc;
+    --resq-muted: #718096;
+    --resq-red: #ef4444;
+    --resq-green: #22c55e;
+    --resq-blue: #38bdf8;
+}
+
+/* ---------- overall shell ---------- */
+
+.app {
+    background:
+        radial-gradient(circle at 80% -10%, rgba(56, 189, 248, 0.055), transparent 28%),
+        radial-gradient(circle at 10% 80%, rgba(239, 68, 68, 0.035), transparent 25%),
+        var(--resq-bg);
+}
+
+.main {
+    background: transparent;
+}
+
+.sidebar {
+    background:
+        linear-gradient(180deg, #090e16 0%, #070b12 100%);
+    border-right: 1px solid var(--resq-border);
+    box-shadow: 12px 0 40px rgba(0, 0, 0, 0.18);
+}
+
+.logo {
+    padding: 24px 20px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.06);
+}
+
+.logo-icon {
+    box-shadow:
+        0 12px 30px rgba(239, 68, 68, 0.18),
+        inset 0 1px 0 rgba(255,255,255,0.12);
+}
+
+.menu-title {
+    margin-top: 26px;
+    color: #475569;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 800;
+}
+
+.nav-button {
+    margin: 4px 12px;
+    width: calc(100% - 24px);
+    border: 1px solid transparent;
+    border-radius: 12px;
+    transition: 180ms ease;
+}
+
+.nav-button:hover {
+    background: rgba(148, 163, 184, 0.055);
+    border-color: rgba(148, 163, 184, 0.07);
+    transform: translateX(2px);
+}
+
+.nav-button.active {
+    background:
+        linear-gradient(90deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.025));
+    border-color: rgba(239, 68, 68, 0.20);
+    box-shadow: inset 3px 0 0 #ef4444;
+}
+
+/* ---------- top bar ---------- */
+
+.topbar {
+    min-height: 82px;
+    padding: 18px 30px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+    background: rgba(6, 10, 16, 0.78);
+    backdrop-filter: blur(18px);
+}
+
+.topbar h1 {
+    font-size: 25px;
+    letter-spacing: -0.5px;
+}
+
+.topbar p {
+    color: #64748b;
+    margin-top: 5px;
+}
+
+.top-actions {
+    gap: 12px;
+}
+
+.live-status {
+    padding: 8px 11px;
+    border: 1px solid rgba(34, 197, 94, 0.16);
+    border-radius: 9px;
+    background: rgba(34, 197, 94, 0.055);
+    color: #4ade80;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.live-status span {
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+}
+
+.sos-button {
+    border-radius: 11px;
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.16);
+    transition: 180ms ease;
+}
+
+.sos-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(239, 68, 68, 0.25);
+}
+
+/* ---------- dashboard stats ---------- */
+
+.stats {
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.stat-card {
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(145deg, rgba(255,255,255,0.018), transparent),
+        var(--resq-surface);
+    border: 1px solid var(--resq-border);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.14);
+    transition: 180ms ease;
+}
+
+.stat-card::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    right: -55px;
+    top: -55px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.025);
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    border-color: #26384e;
+}
+
+.stat-card p {
+    color: #718096;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.stat-card h2 {
+    margin-top: 5px;
+    font-size: 30px;
+    letter-spacing: -1px;
+}
+
+/* ---------- generic panels ---------- */
+
+.panel {
+    background:
+        linear-gradient(145deg, rgba(255,255,255,0.014), transparent 50%),
+        var(--resq-surface);
+    border: 1px solid var(--resq-border);
+    border-radius: 17px;
+    box-shadow: 0 16px 45px rgba(0,0,0,0.15);
+}
+
+.panel-header {
+    padding: 20px 21px;
+    border-bottom: 1px solid rgba(148,163,184,0.07);
+}
+
+.panel-header h3 {
+    font-size: 14px;
+    letter-spacing: -0.1px;
+}
+
+.panel-header p {
+    color: #64748b;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+.count {
+    border: 1px solid #26384e;
+    background: #0a111b;
+    color: #cbd5e1;
+    min-width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
+/* ---------- page headings ---------- */
+
+.page-heading {
+    padding: 7px 2px 22px;
+}
+
+.page-heading h2 {
+    font-size: 27px;
+    letter-spacing: -0.8px;
+}
+
+.page-heading p {
+    color: #64748b;
+    margin-top: 6px;
+}
+
+/* ---------- buttons ---------- */
+
+.primary-button,
+.secondary-button,
+.dispatch-button {
+    min-height: 40px;
+    border-radius: 10px;
+    font-weight: 750;
+    transition: 170ms ease;
+}
+
+.primary-button:hover,
+.secondary-button:hover,
+.dispatch-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+.primary-button {
+    box-shadow: 0 8px 24px rgba(239, 68, 68, 0.12);
+}
+
+.dispatch-button {
+    box-shadow: 0 8px 24px rgba(34, 197, 94, 0.10);
+}
+
+/* =========================================================
+   RESCUE TEAMS PAGE
+   ========================================================= */
+
+.team-actions {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    flex-wrap: wrap;
+}
+
+.team-actions .dispatch-button {
+    min-width: 185px;
+}
+
+.team-summary {
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.team-summary-card {
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(145deg, rgba(255,255,255,0.018), transparent),
+        #0b121c;
+    border: 1px solid var(--resq-border);
+    border-radius: 15px;
+    padding: 19px;
+    transition: 180ms ease;
+}
+
+.team-summary-card:hover {
+    transform: translateY(-2px);
+    border-color: #29415b;
+}
+
+.team-summary-card svg {
+    color: #60a5fa;
+    padding: 9px;
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    background: rgba(96,165,250,0.08);
+}
+
+.team-summary-card span {
+    color: #64748b;
+    font-size: 10px;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.team-summary-card strong {
+    margin-top: 4px;
+    font-size: 22px;
+}
+
+/* Queue */
+
+.team-panel {
+    overflow: hidden;
+}
+
+.team-list {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.team-card {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 15px;
+    min-height: 82px;
+    padding: 14px 16px;
+    background: #0a111b;
+    border: 1px solid #18283a;
+    border-radius: 13px;
+    transition: 170ms ease;
+}
+
+.team-card:hover {
+    background: #0d1622;
+    border-color: #29415b;
+    transform: translateX(2px);
+}
+
+.team-card:first-child {
+    border-color: rgba(34,197,94,0.24);
+    box-shadow:
+        inset 3px 0 0 #22c55e,
+        0 8px 25px rgba(0,0,0,0.12);
+}
+
+.team-number {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #111c2a;
+    border: 1px solid #22344a;
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 850;
+}
+
+.team-card:first-child .team-number {
+    color: #4ade80;
+    border-color: rgba(34,197,94,0.20);
+    background: rgba(34,197,94,0.07);
+}
+
+.team-title {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    flex-wrap: wrap;
+}
+
+.team-title strong {
+    font-size: 14px;
+}
+
+.available-badge,
+.critical-badge {
+    border-radius: 999px;
+    padding: 4px 8px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+}
+
+.available-badge {
+    color: #4ade80;
+    background: rgba(34,197,94,0.08);
+    border: 1px solid rgba(34,197,94,0.15);
+}
+
+.critical-badge {
+    color: #f87171;
+    background: rgba(239,68,68,0.08);
+    border: 1px solid rgba(239,68,68,0.15);
+}
+
+.team-details {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 7px;
+}
+
+.team-details span {
+    color: #64748b;
+    font-size: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.next-team {
+    align-self: center;
+    color: #4ade80;
+    background: rgba(34,197,94,0.07);
+    border: 1px solid rgba(34,197,94,0.16);
+    border-radius: 8px;
+    padding: 7px 9px;
+    font-size: 8px;
+    font-weight: 850;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+}
+
+/* ---------- forms / modals ---------- */
+
+.modal-overlay,
+.sos-overlay {
+    background: rgba(2, 6, 12, 0.80);
+    backdrop-filter: blur(10px);
+}
+
+.team-modal,
+.sos-modal {
+    border: 1px solid #26384e;
+    background:
+        radial-gradient(circle at 100% 0%, rgba(56,189,248,0.045), transparent 30%),
+        #0b121c;
+    box-shadow:
+        0 30px 90px rgba(0,0,0,0.60),
+        0 0 0 1px rgba(255,255,255,0.025);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(148,163,184,0.08);
+    padding-bottom: 17px;
+}
+
+.team-modal label,
+.sos-form label {
+    color: #a5b4c7;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.team-modal input,
+.team-modal select,
+.sos-form input,
+.sos-form select {
+    background: #080f18;
+    border: 1px solid #26384e;
+    color: #f8fafc;
+    border-radius: 10px;
+    transition: 160ms ease;
+}
+
+.team-modal input:focus,
+.team-modal select:focus,
+.sos-form input:focus,
+.sos-form select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.09);
+}
+
+.close-button,
+.sos-close {
+    border-radius: 9px;
+    transition: 150ms ease;
+}
+
+.close-button:hover,
+.sos-close:hover {
+    background: rgba(148,163,184,0.09);
+}
+
+/* ---------- emergency cards ---------- */
+
+.emergency-list {
+    padding: 13px;
+    display: grid;
+    gap: 9px;
+}
+
+.emergency-card {
+    background: #0a111b;
+    border: 1px solid #18283a;
+    border-radius: 13px;
+    padding: 17px;
+    display: grid;
+    grid-template-columns: 72px minmax(0,1fr) 75px;
+    align-items: center;
+    gap: 16px;
+    transition: 170ms ease;
+}
+
+.emergency-card:hover {
+    border-color: #2b4058;
+    transform: translateY(-1px);
+}
+
+.emergency-id {
+    color: #f87171;
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: 0.8px;
+}
+
+.emergency-info strong {
+    font-size: 14px;
+}
+
+.emergency-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 8px;
+}
+
+.emergency-details span {
+    color: #718096;
+    background: #0e1824;
+    border: 1px solid #18283a;
+    border-radius: 7px;
+    padding: 5px 7px;
+    font-size: 9px;
+}
+
+.priority-score {
+    text-align: center;
+    padding: 9px;
+    border-radius: 10px;
+    background: rgba(239,68,68,0.055);
+    border: 1px solid rgba(239,68,68,0.12);
+}
+
+.priority-score small {
+    display: block;
+    color: #64748b;
+    font-size: 7px;
+    letter-spacing: 1px;
+}
+
+.priority-score strong {
+    display: block;
+    color: #f87171;
+    font-size: 21px;
+    margin-top: 2px;
+}
+
+/* ---------- victims ---------- */
+
+.rescue-button {
+    border: 1px solid rgba(34,197,94,0.18);
+    background: rgba(34,197,94,0.07);
+    color: #4ade80;
+    border-radius: 9px;
+    padding: 9px 11px;
+    font-weight: 750;
+    transition: 160ms ease;
+}
+
+.rescue-button:hover {
+    background: rgba(34,197,94,0.13);
+    transform: translateY(-1px);
+}
+
+/* ---------- empty states ---------- */
+
+.empty-state {
+    min-height: 280px;
+    color: #475569;
+}
+
+.empty-state h3 {
+    color: #cbd5e1;
+    margin-top: 13px;
+}
+
+.empty-state p {
+    color: #64748b;
+    margin-top: 5px;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 900px) {
+    .team-card {
+        grid-template-columns: 38px minmax(0, 1fr);
+    }
+
+    .next-team {
+        grid-column: 2;
+        justify-self: start;
+    }
+
+    .emergency-card {
+        grid-template-columns: 65px minmax(0,1fr);
+    }
+
+    .priority-score {
+        grid-column: 2;
+        justify-self: start;
+        min-width: 70px;
+    }
+}
+
+@media (max-width: 650px) {
+    .topbar {
+        padding: 15px 18px;
+    }
+
+    .stats,
+    .team-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .team-actions {
+        width: 100%;
+    }
+
+    .team-actions button {
+        flex: 1;
+    }
+
+    .team-card {
+        grid-template-columns: 1fr;
+    }
+
+    .team-number {
+        display: none;
+    }
+
+    .next-team {
+        grid-column: auto;
+    }
+
+    .emergency-card {
+        grid-template-columns: 1fr;
+    }
+
+    .priority-score {
+        grid-column: auto;
+    }
+}
+
+
+/* ---------- mobile navigation and dashboard layout ---------- */
+.mobile-menu-backdrop { display: none; }
+.menu-button { cursor: pointer; }
+
+@media (max-width: 760px) {
+    .app {
+        width: 100%;
+        min-height: 100dvh;
+        overflow-x: hidden;
+    }
+
+    .main {
+        width: 100%;
+        min-width: 0;
+        margin-left: 0 !important;
+    }
+
+    .sidebar {
+        position: fixed !important;
+        z-index: 1001;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: min(82vw, 300px) !important;
+        max-width: 300px;
+        height: 100dvh;
+        overflow-y: auto;
+        transform: translateX(-110%);
+        transition: transform 220ms ease;
+        visibility: hidden;
+    }
+
+    .sidebar.sidebar-open {
+        transform: translateX(0) !important;
+        visibility: visible !important;
+    }
+
+    .mobile-menu-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        border: 0;
+        padding: 0;
+        background: rgba(0, 0, 0, 0.62);
+        cursor: pointer;
+    }
+
+    .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 12px 14px !important;
+        min-width: 0;
+    }
+
+    .topbar > div:first-child { min-width: 0; }
+    .topbar h1 { font-size: clamp(17px, 5vw, 23px); line-height: 1.2; }
+    .topbar p { font-size: 11px; line-height: 1.4; }
+    .top-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .live-status { display: none !important; }
+    .menu-button {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+        border: 1px solid var(--resq-border, #1b2a3d);
+        border-radius: 10px;
+        color: var(--resq-text, #f8fafc);
+        background: var(--resq-surface-2, #101824);
+    }
+
+    .stats, .team-summary, .dashboard-grid, .content-grid {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+
+    .main > section, .main > .panel, .main > div {
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .stat-card, .panel, .emergency-card, .team-card, .victim-card {
+        min-width: 0;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .main img, .main canvas, .main .leaflet-container {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 420px) {
+    .topbar { padding: 10px !important; }
+    .topbar p { max-width: 210px; }
+    .sos-button { padding: 9px 10px; }
+}

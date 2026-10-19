@@ -1,0 +1,675 @@
+
+/* =========================================================
+   RESQ ROLE SELECTION + VICTIM PORTAL
+   ========================================================= */
+
+.role-screen {
+    min-height: 100vh;
+    min-height: 100dvh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    color: #f8fafc;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(239, 68, 68, 0.10), transparent 28%),
+        radial-gradient(circle at 85% 75%, rgba(34, 197, 94, 0.08), transparent 30%),
+        linear-gradient(145deg, #05080d 0%, #080d16 52%, #060a10 100%);
+}
+
+.role-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.32;
+    background-image:
+        linear-gradient(rgba(148, 163, 184, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+.role-container {
+    width: min(1080px, 100%);
+    position: relative;
+    z-index: 2;
+}
+
+/* ---------------- Brand ---------------- */
+
+.role-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 56px;
+}
+
+.role-logo {
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: linear-gradient(145deg, #ef4444, #b91c1c);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow:
+        0 14px 40px rgba(239, 68, 68, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.role-brand h1 {
+    margin: 0;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: 2px;
+    font-weight: 850;
+}
+
+.role-brand p {
+    margin: 6px 0 0;
+    color: #64748b;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+}
+
+/* ---------------- Heading ---------------- */
+
+.role-heading {
+    text-align: center;
+    margin: 0 auto 38px;
+    max-width: 720px;
+}
+
+.role-heading span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2.8px;
+}
+
+.role-heading span::before,
+.role-heading span::after {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: #334155;
+}
+
+.role-heading h2 {
+    margin: 14px 0 12px;
+    font-size: clamp(34px, 5vw, 54px);
+    line-height: 1.05;
+    letter-spacing: -1.8px;
+    font-weight: 850;
+}
+
+.role-heading p {
+    margin: 0 auto;
+    max-width: 600px;
+    color: #64748b;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+/* ---------------- Role Cards ---------------- */
+
+.role-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.role-card {
+    position: relative;
+    min-height: 290px;
+    overflow: hidden;
+    border: 1px solid #1e293b;
+    border-radius: 26px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    color: #f8fafc;
+    cursor: pointer;
+    transition:
+        transform 220ms ease,
+        border-color 220ms ease,
+        box-shadow 220ms ease,
+        background 220ms ease;
+}
+
+.role-card::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    right: -95px;
+    bottom: -105px;
+    filter: blur(8px);
+    opacity: 0.12;
+    transition: transform 300ms ease, opacity 300ms ease;
+}
+
+.role-card:hover {
+    transform: translateY(-7px);
+}
+
+.role-card:hover::before {
+    transform: scale(1.35);
+    opacity: 0.20;
+}
+
+.role-card:active {
+    transform: translateY(-2px);
+}
+
+.role-card:focus-visible {
+    outline: 2px solid #94a3b8;
+    outline-offset: 4px;
+}
+
+.victim-role {
+    background:
+        linear-gradient(145deg, rgba(127, 29, 29, 0.15), transparent 55%),
+        #0c111b;
+}
+
+.victim-role::before {
+    background: #ef4444;
+}
+
+.victim-role:hover {
+    border-color: rgba(239, 68, 68, 0.65);
+    box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.42),
+        0 0 0 1px rgba(239, 68, 68, 0.08);
+}
+
+.rescuer-role {
+    background:
+        linear-gradient(145deg, rgba(20, 83, 45, 0.15), transparent 55%),
+        #0c111b;
+}
+
+.rescuer-role::before {
+    background: #22c55e;
+}
+
+.rescuer-role:hover {
+    border-color: rgba(34, 197, 94, 0.60);
+    box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.42),
+        0 0 0 1px rgba(34, 197, 94, 0.08);
+}
+
+.role-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.role-card-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.victim-role .role-card-icon {
+    color: #f87171;
+    background: rgba(239, 68, 68, 0.11);
+    border: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+.rescuer-role .role-card-icon {
+    color: #4ade80;
+    background: rgba(34, 197, 94, 0.10);
+    border: 1px solid rgba(34, 197, 94, 0.14);
+}
+
+.role-card-number {
+    color: #475569;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.role-card-content {
+    position: relative;
+    z-index: 1;
+    margin-top: 28px;
+}
+
+.role-card-content h3 {
+    margin: 0 0 9px;
+    font-size: 25px;
+    letter-spacing: -0.4px;
+}
+
+.role-card-content p {
+    max-width: 410px;
+    margin: 0;
+    color: #7c8ba1;
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+.role-card-action {
+    position: relative;
+    z-index: 1;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+}
+
+.victim-role .role-card-action {
+    color: #f87171;
+}
+
+.rescuer-role .role-card-action {
+    color: #4ade80;
+}
+
+.role-card-action span:last-child {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.04);
+    transition: transform 200ms ease;
+}
+
+.role-card:hover .role-card-action span:last-child {
+    transform: translateX(4px);
+}
+
+.role-footer {
+    margin: 28px 0 0;
+    text-align: center;
+    color: #475569;
+    font-size: 11px;
+}
+
+/* ---------------- Ambient effects ---------------- */
+
+.role-glow {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(90px);
+}
+
+.role-glow-one {
+    width: 360px;
+    height: 360px;
+    top: -190px;
+    left: -130px;
+    background: #ef4444;
+    opacity: 0.08;
+}
+
+.role-glow-two {
+    width: 420px;
+    height: 420px;
+    right: -180px;
+    bottom: -230px;
+    background: #22c55e;
+    opacity: 0.07;
+}
+
+/* =========================================================
+   VICTIM PORTAL
+   ========================================================= */
+
+.victim-app {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background:
+        radial-gradient(circle at 80% 10%, rgba(239, 68, 68, 0.06), transparent 28%),
+        #070b12;
+    color: #f8fafc;
+}
+
+.victim-topbar {
+    height: 76px;
+    padding: 0 clamp(20px, 5vw, 70px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #172033;
+    background: rgba(7, 11, 18, 0.94);
+    backdrop-filter: blur(18px);
+}
+
+.victim-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.victim-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: #dc2626;
+    box-shadow: 0 10px 30px rgba(220, 38, 38, 0.18);
+}
+
+.victim-brand strong {
+    display: block;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.victim-brand span {
+    display: block;
+    color: #64748b;
+    font-size: 10px;
+    margin-top: 2px;
+}
+
+.switch-role-button,
+.switch-role-sidebar {
+    border: 1px solid #263449;
+    background: #111827;
+    color: #cbd5e1;
+    border-radius: 10px;
+    padding: 9px 14px;
+    cursor: pointer;
+    transition: 160ms ease;
+}
+
+.switch-role-button:hover,
+.switch-role-sidebar:hover {
+    border-color: #475569;
+    background: #1e293b;
+}
+
+.victim-content {
+    width: min(1100px, 90%);
+    margin: 0 auto;
+    padding: 55px 0;
+}
+
+.victim-hero {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 95% 50%, rgba(239, 68, 68, 0.12), transparent 32%),
+        linear-gradient(135deg, #111827, #0b111c);
+    border: 1px solid #263449;
+    border-radius: 25px;
+    padding: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+}
+
+.victim-hero h1 {
+    margin: 8px 0 12px;
+    font-size: clamp(32px, 5vw, 52px);
+    letter-spacing: -1.5px;
+}
+
+.victim-hero p {
+    max-width: 620px;
+    color: #94a3b8;
+    line-height: 1.7;
+}
+
+.victim-sos-button {
+    min-width: 245px;
+    padding: 22px 24px;
+    border: 0;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #ef4444, #b91c1c);
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    box-shadow: 0 18px 45px rgba(220, 38, 38, 0.25);
+    transition: 180ms ease;
+}
+
+.victim-sos-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 23px 55px rgba(220, 38, 38, 0.32);
+}
+
+.victim-sos-button strong,
+.victim-sos-button span {
+    display: block;
+    text-align: left;
+}
+
+.victim-sos-button span {
+    margin-top: 4px;
+    font-size: 11px;
+    opacity: 0.78;
+}
+
+.victim-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin: 22px 0;
+}
+
+.victim-info-card {
+    border: 1px solid #1e293b;
+    background: #0f172a;
+    border-radius: 17px;
+    padding: 22px;
+    display: flex;
+    gap: 15px;
+}
+
+.victim-info-icon {
+    color: #60a5fa;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(96, 165, 250, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.victim-info-card h3 {
+    margin: 0 0 6px;
+}
+
+.victim-info-card p {
+    color: #94a3b8;
+    margin: 0;
+    line-height: 1.5;
+    font-size: 13px;
+}
+
+.victim-status-panel {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+.victim-status-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.victim-status-header h2 {
+    margin: 0;
+}
+
+.victim-status-header p {
+    color: #64748b;
+    margin: 5px 0 0;
+}
+
+.victim-status-header > span {
+    color: #4ade80;
+    background: rgba(34, 197, 94, 0.1);
+    padding: 7px 11px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.victim-emergency-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px;
+    border-radius: 11px;
+    margin-top: 9px;
+    border-left: 3px solid;
+}
+
+.rescue-pending {
+    background: rgba(239, 68, 68, 0.07);
+    border-left-color: #ef4444;
+}
+
+.rescue-underway {
+    background: rgba(34, 197, 94, 0.07);
+    border-left-color: #22c55e;
+}
+
+.victim-emergency-row p {
+    margin: 4px 0 0;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.victim-emergency-row span {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.rescue-pending span {
+    color: #f87171;
+}
+
+.rescue-underway span {
+    color: #4ade80;
+}
+
+.victim-empty {
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #4ade80;
+}
+
+.victim-empty p {
+    color: #64748b;
+}
+
+.switch-role-sidebar {
+    width: 100%;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 800px) {
+    .role-screen {
+        padding: 24px 16px;
+        align-items: flex-start;
+        overflow-y: auto;
+    }
+
+    .role-container {
+        margin: 30px 0;
+    }
+
+    .role-brand {
+        margin-bottom: 42px;
+    }
+
+    .role-heading h2 {
+        font-size: 36px;
+    }
+
+    .role-cards,
+    .victim-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .role-card {
+        min-height: 255px;
+    }
+
+    .victim-hero {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 28px;
+    }
+
+    .victim-sos-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .role-card {
+        padding: 24px;
+    }
+
+    .role-card-content h3 {
+        font-size: 22px;
+    }
+
+    .role-heading h2 {
+        font-size: 31px;
+    }
+
+    .victim-topbar {
+        padding: 0 16px;
+    }
+
+    .victim-content {
+        width: calc(100% - 28px);
+        padding: 28px 0;
+    }
+
+    .victim-hero h1 {
+        font-size: 34px;
+    }
+}

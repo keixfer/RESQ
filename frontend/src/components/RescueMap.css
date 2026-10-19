@@ -1,0 +1,354 @@
+/* Styles for the RESQ rescuer dashboard map */
+
+.resq-map-shell {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 18px;
+  background: rgba(9, 15, 25, 0.96);
+  color: #f8fafc;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
+  text-align: left;
+}
+
+.resq-map-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.resq-map-map-title,
+.resq-map-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resq-map-map-title strong {
+  display: block;
+  color: #f8fafc;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.resq-map-map-title small {
+  display: block;
+  margin-top: 4px;
+  color: #8d9bb0;
+  font-size: 11px;
+}
+
+.resq-map-live-dot {
+  width: 9px;
+  height: 9px;
+  flex: 0 0 9px;
+  border-radius: 50%;
+  background: #2dd4bf;
+  box-shadow: 0 0 0 4px rgba(45, 212, 191, 0.13);
+}
+
+.resq-map-actions {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.resq-map-filter,
+.resq-map-locate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 8px 10px;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 9px;
+  background: rgba(15, 23, 36, 0.75);
+  color: #cbd5e1;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.resq-map-filter.is-active {
+  border-color: rgba(45, 212, 191, 0.35);
+  background: rgba(13, 148, 136, 0.12);
+  color: #e2fffb;
+}
+
+.resq-map-filter b {
+  color: #fff;
+  font-size: 10px;
+}
+
+.resq-map-locate {
+  border-color: rgba(45, 212, 191, 0.35);
+  background: #0f766e;
+  color: white;
+}
+
+.resq-map-locate:hover {
+  background: #115e59;
+}
+
+.resq-map-locate:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.resq-map-target {
+  font-size: 17px;
+  line-height: 0.8;
+}
+
+.resq-map-legend-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+}
+
+.emergency-dot {
+  background: #f04452;
+  box-shadow: 0 0 0 3px rgba(240, 68, 82, 0.12);
+}
+
+.team-dot {
+  background: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
+}
+
+.current-dot {
+  background: #2dd4bf;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.12);
+}
+
+.resq-map-canvas {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  min-height: 340px;
+  overflow: hidden;
+  background: #dfe7e9;
+}
+
+.resq-leaflet-map,
+.resq-map-canvas .leaflet-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  background: #e3e9eb;
+  font-family: inherit;
+  z-index: 1;
+}
+
+.resq-map-canvas .leaflet-control-zoom {
+  overflow: hidden;
+  border: 0;
+  border-radius: 9px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.2);
+}
+
+.resq-map-canvas .leaflet-control-zoom a {
+  color: #263449;
+}
+
+.resq-map-canvas .leaflet-control-attribution {
+  font-size: 9px;
+}
+
+.resq-map-scale-note {
+  position: absolute;
+  z-index: 400;
+  left: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  padding: 9px 11px;
+  border: 1px solid #e0e6ea;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #475569;
+  font-size: 10px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.12);
+  pointer-events: none;
+}
+
+.resq-map-scale-note .resq-map-legend-dot {
+  margin-right: -5px;
+}
+
+.resq-map-empty {
+  position: absolute;
+  z-index: 450;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 12px 14px;
+  border: 1px solid #e4e8ed;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #334155;
+  pointer-events: none;
+}
+
+.resq-map-empty-icon {
+  color: #0f766e;
+  font-size: 20px;
+}
+
+.resq-map-empty strong {
+  font-size: 12px;
+}
+
+.resq-map-empty span {
+  color: #64748b;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.resq-map-marker-wrap,
+.resq-map-current-wrap {
+  background: transparent;
+  border: 0;
+}
+
+.resq-map-pin {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 3px solid #fff;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.38);
+}
+
+.resq-map-pin span {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  transform: rotate(45deg);
+}
+
+.resq-map-pin-red {
+  background: #e11d48;
+}
+
+.resq-map-pin-orange {
+  background: #ea580c;
+}
+
+.resq-map-pin-green {
+  background: #16a34a;
+}
+
+.resq-map-pin-blue {
+  background: #0284c7;
+}
+
+.resq-map-current {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 3px solid white;
+  border-radius: 50%;
+  background: rgba(20, 184, 166, 0.28);
+  box-shadow: 0 0 0 7px rgba(20, 184, 166, 0.18), 0 2px 8px rgba(15, 23, 42, 0.3);
+}
+
+.resq-map-current span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0f766e;
+}
+
+.resq-map-popup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 150px;
+  color: #334155;
+  font-size: 12px;
+}
+
+.resq-map-popup strong {
+  color: #0f172a;
+  font-size: 13px;
+}
+
+.resq-map-popup span {
+  line-height: 1.4;
+}
+
+.resq-map-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 9px;
+  padding: 11px 16px;
+  border-top: 1px solid rgba(148, 163, 184, 0.15);
+  color: #93a0b3;
+  font-size: 10px;
+}
+
+.resq-map-location-message {
+  flex: 1 1 180px;
+  color: #a7e8dd;
+}
+
+.resq-map-footer a {
+  color: #5eead4;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.resq-map-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 760px) {
+  .resq-map-toolbar {
+    align-items: flex-start;
+    padding: 14px;
+  }
+
+  .resq-map-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .resq-map-canvas {
+    height: 360px;
+    min-height: 300px;
+  }
+
+  .resq-leaflet-map,
+  .resq-map-canvas .leaflet-container {
+    min-height: 300px;
+  }
+
+  .resq-map-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

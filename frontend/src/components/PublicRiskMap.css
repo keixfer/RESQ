@@ -1,0 +1,97 @@
+.public-risk-panel {
+    width: 100%;
+    margin: 26px 0 20px;
+    overflow: hidden;
+    border: 1px solid rgba(148,163,184,.22);
+    border-radius: 18px;
+    background: rgba(9, 15, 25, .92);
+    box-shadow: 0 18px 55px rgba(0,0,0,.18);
+    color: #f8fafc;
+    text-align: left;
+}
+.public-risk-header {
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+    padding:19px 20px 15px; border-bottom:1px solid rgba(148,163,184,.15);
+}
+.public-risk-eyebrow { display:flex; align-items:center; gap:8px; color:#ff7b86; font-size:9px; font-weight:800; letter-spacing:.17em; }
+.public-risk-eyebrow span { width:7px; height:7px; border-radius:50%; background:#f04452; box-shadow:0 0 0 4px rgba(240,68,82,.13); }
+.public-risk-header h3 { margin:7px 0 4px; color:#f8fafc; font-size:19px; font-weight:800; letter-spacing:-.025em; }
+.public-risk-header p { margin:0; color:#8d9bb0; font-size:11px; }
+.public-risk-count { display:flex; flex-direction:column; align-items:center; justify-content:center; min-width:70px; padding:9px 12px; border:1px solid rgba(240,68,82,.25); border-radius:12px; background:rgba(240,68,82,.08); }
+.public-risk-count strong { color:#ff737d; font-size:23px; line-height:1.1; }
+.public-risk-count span { margin-top:3px; color:#aeb8c7; font-size:9px; white-space:nowrap; }
+.public-risk-content { display:grid; grid-template-columns:minmax(0,1.55fr) minmax(230px,.85fr); min-height:310px; }
+.public-risk-map-wrap { position:relative; min-height:310px; overflow:hidden; background:#dfe7e9; }
+.public-risk-map { width:100%; height:100%; min-height:310px; background:#e3e9eb; }
+.public-risk-map .leaflet-control-zoom { border:0; overflow:hidden; border-radius:9px; box-shadow:0 3px 12px rgba(15,23,42,.2); }
+.public-risk-map .leaflet-control-zoom a { color:#263449; }
+.public-risk-map-legend { position:absolute; z-index:400; left:10px; bottom:10px; display:flex; align-items:center; gap:7px; padding:8px 10px; border:1px solid #e0e6ea; border-radius:8px; background:rgba(255,255,255,.96); color:#475569; font-size:9px; box-shadow:0 3px 12px rgba(15,23,42,.12); pointer-events:none; }
+.public-risk-map-legend span { width:9px; height:9px; border-radius:50%; background:#f04452; }
+.public-risk-map-empty { position:absolute; z-index:450; top:12px; left:12px; right:12px; padding:11px 13px; border:1px solid #e4e8ed; border-radius:10px; background:rgba(255,255,255,.95); color:#334155; display:flex; flex-direction:column; gap:4px; pointer-events:none; }
+.public-risk-map-empty strong { font-size:11px; }
+.public-risk-map-empty span { color:#64748b; font-size:10px; line-height:1.4; }
+.public-risk-list { padding:17px; border-left:1px solid rgba(148,163,184,.15); background:rgba(15,23,36,.7); }
+.public-risk-list-title { display:flex; align-items:center; gap:10px; padding-bottom:13px; border-bottom:1px solid rgba(148,163,184,.14); }
+.public-risk-alert-symbol { width:28px; height:28px; display:grid; place-items:center; border-radius:9px; background:rgba(240,68,82,.13); color:#ff6b77; font-weight:900; }
+.public-risk-list-title strong { display:block; color:#f1f5f9; font-size:12px; }
+.public-risk-list-title small { display:block; margin-top:3px; color:#8492a7; font-size:9px; }
+.public-risk-clear { padding:18px 0 12px; }
+.public-risk-clear-dot { display:block; width:8px; height:8px; margin-bottom:9px; border-radius:50%; background:#e6a23c; box-shadow:0 0 0 4px rgba(230,162,60,.1); }
+.public-risk-clear strong { color:#d9e2ee; font-size:11px; }
+.public-risk-clear p { margin:6px 0 0; color:#93a0b3; font-size:10px; line-height:1.5; }
+.public-risk-items { display:flex; flex-direction:column; }
+.public-risk-item { display:flex; gap:9px; padding:12px 0; border-bottom:1px solid rgba(148,163,184,.12); }
+.public-risk-item-marker { flex:0 0 22px; width:22px; height:22px; display:grid; place-items:center; border-radius:7px; background:rgba(240,68,82,.13); color:#ff737d; font-size:11px; font-weight:900; }
+.public-risk-item strong { display:block; color:#f1f5f9; font-size:10px; line-height:1.35; }
+.public-risk-item p { margin:4px 0; color:#a6b2c3; font-size:9px; overflow-wrap:anywhere; }
+.public-risk-item small { color:#ff939b; font-size:9px; }
+.public-risk-more { margin:10px 0 0; color:#9eabbd; font-size:10px; }
+.public-risk-missing { margin:12px 0 0; color:#f3c16e; font-size:9px; line-height:1.45; }
+.public-risk-disclaimer { margin-top:15px; padding:11px; border:1px solid rgba(230,162,60,.2); border-radius:10px; background:rgba(230,162,60,.055); }
+.public-risk-disclaimer strong { color:#f2c36f; font-size:10px; }
+.public-risk-disclaimer p { margin:5px 0 0; color:#aeb8c7; font-size:9px; line-height:1.5; }
+@media (max-width: 760px) {
+    .public-risk-content { grid-template-columns:1fr; }
+    .public-risk-map-wrap, .public-risk-map { min-height:290px; }
+    .public-risk-list { border-left:0; border-top:1px solid rgba(148,163,184,.15); }
+    .public-risk-header { padding:16px; }
+    .public-risk-header h3 { font-size:17px; }
+}
+
+.public-risk-header-actions { display:flex; align-items:center; gap:9px; }
+.public-risk-route-toggle {
+    border:1px solid rgba(45,212,191,.35); border-radius:10px; padding:10px 12px;
+    background:rgba(13,148,136,.13); color:#77e6d6; font:inherit; font-size:10px; font-weight:800;
+    cursor:pointer; white-space:nowrap;
+}
+.public-risk-route-toggle:hover, .public-risk-route-toggle.is-on { background:rgba(13,148,136,.24); border-color:rgba(45,212,191,.6); }
+.public-risk-routing { margin-top:14px; padding:12px; border:1px solid rgba(45,212,191,.2); border-radius:11px; background:rgba(13,148,136,.055); }
+.public-risk-routing > strong { display:block; color:#c9fff6; font-size:11px; }
+.public-risk-routing p { margin:6px 0 8px; color:#9fb4c7; font-size:10px; line-height:1.45; }
+.public-risk-routing > small { display:block; margin-top:4px; color:#9fb4c7; font-size:9px; overflow-wrap:anywhere; }
+.public-risk-route-distance { margin-top:8px; color:#d9e9f5; font-size:10px; }
+.public-risk-route-distance b { color:#5eead4; }
+.public-risk-route-message { margin-top:8px; color:#a7e8dd; font-size:10px; line-height:1.45; overflow-wrap:anywhere; }
+.public-risk-route-buttons { display:flex; gap:7px; margin-top:10px; }
+.public-risk-route-buttons button { flex:1; border:0; border-radius:8px; padding:9px 8px; background:#0f766e; color:#fff; font:inherit; font-size:10px; font-weight:800; cursor:pointer; }
+.public-risk-route-buttons button:hover:not(:disabled) { background:#115e59; }
+.public-risk-route-buttons button:disabled { opacity:.45; cursor:not-allowed; }
+.public-risk-route-buttons .public-risk-route-clear { flex:0 0 auto; border:1px solid rgba(148,163,184,.25); background:transparent; color:#c4cfdd; }
+.public-risk-route-note { display:block; margin-top:9px; color:#7f90a6; font-size:9px; line-height:1.5; }
+.route-legend-line { width:17px; height:3px; border-radius:3px; background:#087f8c; display:inline-block; }
+@media (max-width: 760px) {
+    .public-risk-header-actions { width:100%; justify-content:space-between; }
+    .public-risk-route-toggle { flex:1; }
+}
+
+.public-risk-data-panel { margin-top:14px; padding:12px; border:1px solid rgba(148,163,184,.2); border-radius:11px; background:rgba(15,23,36,.58); }
+.public-risk-data-heading { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+.public-risk-data-heading strong { display:block; color:#e5edf7; font-size:11px; }
+.public-risk-data-heading p { margin:5px 0 0; color:#9fb0c4; font-size:10px; line-height:1.45; }
+.public-risk-layer-toggle { flex:0 0 auto; border:1px solid rgba(148,163,184,.25); border-radius:7px; padding:6px 8px; background:transparent; color:#cbd5e1; font:inherit; font-size:9px; cursor:pointer; }
+.public-risk-layer-toggle:disabled { opacity:.4; cursor:not-allowed; }
+.public-risk-file-label { display:block; margin-top:10px; border:1px dashed rgba(248,113,113,.45); border-radius:8px; padding:10px; background:rgba(239,68,68,.055); color:#ffb1b7; text-align:center; font-size:10px; font-weight:750; cursor:pointer; }
+.public-risk-file-label input { display:block; width:100%; margin-top:8px; color:#b9c5d5; font-size:9px; }
+.public-risk-file-success { margin-top:7px; color:#6ee7b7; font-size:10px; overflow-wrap:anywhere; }
+.public-risk-file-error { margin-top:7px; color:#fca5a5; font-size:10px; line-height:1.4; }
+.public-risk-data-note { display:block; margin-top:9px; color:#7f90a6; font-size:9px; line-height:1.5; }
